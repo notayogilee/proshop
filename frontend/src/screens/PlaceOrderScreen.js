@@ -11,10 +11,11 @@ const PlaceOrderScreen = ({ history }) => {
 
   const cart = useSelector(state => state.cart);
 
+  // Calculate prices
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   }
-  // Calculate prices
+
   cart.itemsPrice = addDecimals(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0));
 
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 10);

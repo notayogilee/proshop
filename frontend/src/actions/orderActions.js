@@ -48,7 +48,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       type: ORDER_DETAILS_REQUEST
     });
 
-    const { userLogin: { userInfo } } = getState();
+    const { userLogin: { userInfo } } = getState()
 
     const config = {
       headers: {
