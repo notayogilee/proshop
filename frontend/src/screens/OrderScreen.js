@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Moment from 'react-moment';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { Link } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
@@ -92,10 +93,10 @@ const OrderScreen = ({ match, history }) => {
                   {order.shippingAddress.address}, {order.shippingAddress.city} {order.shippingAddress.postalCode}, {order.shippingAddress.country}
                 </p>
                 {order.isDelivered ? (
-                  <Message variant="success">Delivered on {order.deliveredAt}</Message>
+                  <Message variant="success">Delivered on <Moment format={"DD MMM YYYY"}>{order.deliveredAt}</Moment></Message>
                 ) : (
-                    <Message variant="danger">Not Delivered</Message>
-                  )}
+                  <Message variant="danger">Not Delivered</Message>
+                )}
               </ListGroup.Item>
 
               <ListGroup.Item>
@@ -103,10 +104,10 @@ const OrderScreen = ({ match, history }) => {
                 <p> <strong>Method: </strong>
                   {order.paymentMethod}</p>
                 {order.isPaid ? (
-                  <Message variant="success">Paid on {order.paidAt}</Message>
+                  <Message variant="success">Paid on <Moment format={"DD MMM YYYY"}>{order.paidAt}</Moment></Message>
                 ) : (
-                    <Message variant="danger">Not Paid</Message>
-                  )}
+                  <Message variant="danger">Not Paid</Message>
+                )}
 
               </ListGroup.Item>
 

@@ -93,6 +93,12 @@ const Cartscreen = ({ match, location, history }) => {
             </ListGroup.Item>
           </ListGroup>
         </Card>
+        <Row>
+          <p className='mx-auto mt-3'>
+            <Link to="/">Continue Shopping</Link>
+          </p>
+
+        </Row>
       </Col>
     </Row>
   )

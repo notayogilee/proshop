@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, Table } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import Moment from 'react-moment';
 import Message from '../components/Message.js';
 import Loader from '../components/Loader.js';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
@@ -28,6 +29,7 @@ const ProfileScreen = ({ location, history }) => {
 
   const orderListMy = useSelector(state => state.orderListMy)
   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+  console.log(orders)
 
   useEffect(() => {
     if (!userInfo) {
@@ -130,10 +132,10 @@ const ProfileScreen = ({ location, history }) => {
                 <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>${order.totalPrice}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
+                <td>{order.isPaid ? <Moment format={"DD MMM YYYY"}>{order.paidAt}</Moment> : (
                   <i className="fas fa-times" style={{ color: "red" }}></i>
                 )}</td>
-                <td>{order.idDelivered ? order.deliveredAt.substring(0, 10) : (
+                <td>{order.isDelivered ? <Moment format={"DD MMM YYYY"}>{order.deliveredAt}</Moment> : (
                   <i className="fas fa-times" style={{ color: "red" }}></i>
                 )}</td>
                 <td>
